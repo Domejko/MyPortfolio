@@ -1,0 +1,132 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://kit.fontawesome.com/8af3ef631c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="../../media/user_images/logo.png" class="logo">
+            <ul id="sidemenu">
+                <li><a href="#header">Home</a> </li>
+                <li><a href="#about">About</a> </li>
+                <li><a href="#projects">Projects</a> </li>
+                <li><a href="#contatct">Contact</a> </li>
+                <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+        <div class="header-text">
+            <p>Python Developer</p>
+            <h1>Hello, I'm<br> <span>{{ user.name }} </span>{{ user.surname }}<br> Backend Developer</h1>
+        </div>
+    </div>
+</div>
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                {% with images=user.images.all %}
+                    <img src="{{ images.1.image.url }}">
+                {% endwith %}
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p>{{ user.about_me }}</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                </div>
+                <div class="tab-content active-tab" id="skills">
+                    <ul>
+                        {% for skill in user.skills.all %}
+                            <li><span>{{ skill.skill }}</span><br> {{ skill.description }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="tab-content" id="experience">
+                    <ul>
+                        {% for experience in user.experiences.all %}
+                            <li><span>{{ experience.experience }}</span><br> {{ experience.description }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="projects">
+    <div class="container">
+        <h1 class="sub-title">My Projects</h1>
+        <div class="projects-list">
+            <div class="project">
+                <img src="{{ image_urls.0 }}">
+                <div class="layer">
+                    <h3>{{ project_title.0 }}</h3>
+                    <p>{{ project_description.0 }}</p>
+                    <a href="{{ project_link.0 }}"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="{{ image_urls.1 }}">
+                <div class="layer">
+                    <h3>{{ project_title.1 }}</h3>
+                    <p>{{ project_description.1 }}</p>
+                    <a href="{{ project_link.1 }}"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="project">
+                <img src="{{ image_urls.2 }}">
+                <div class="layer">
+                    <h3>{{ project_title.2 }}</h3>
+                    <p>{{ project_description.2 }}</p>
+                    <a href="{{ project_link.2 }}"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn"><span>See more</span><i></i></a>
+    </div>
+</div>
+
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-regular fa-paper-plane"></i> {{ user.email }}</p>
+                <p><i class="fa-solid fa-phone"></i> {{ user.phone_number }} </p>
+                <div class="social-icons">
+                    <a href="{{ user.link }}"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <a href="{{ user.resume.url }}" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <script src="../static/js/contact.js"></script>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © Sławek.</p>
+    </div>
+</div>
+</body>
+
+<script src="../static/js/tab.js"></script>
+<script src="../static/js/sidemenu.js"></script>
+
+</html>
