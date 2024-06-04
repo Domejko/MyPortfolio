@@ -28,7 +28,7 @@ and go to http://127.0.0.1:8000/admin there you need to log in with your superus
 website you need to add a user in BACKEND **Users** table. There are needed 2 pictures and 2 logo images (maybe 2 same ones)
 it's **important** to check `is_active` checkbox because that's how the user that's about to be displayed found. Thanks to
 `is_active` field you can create multiple users and check which one will suite you best.
-Another table that you will need to fill is **Projects** (it's possible to run website without it). \
+Another table that you will need to fill is **Projects** (it's possible to run website without it).
 
 When it's all done you can go to http://127.0.0.1:8000 to see the website. 
 
