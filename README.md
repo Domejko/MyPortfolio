@@ -24,7 +24,7 @@ After that you can run a website on a localhost with this command:
 ```commandline
 python manage.py runserver
 ```
-and go to http://127.0.0.1:8000/admin there you need to log in with your superuser credentials. In order to start the 
+After those steps go to http://127.0.0.1:8000/admin, there you need to log in with your superuser credentials. In order to start the 
 website you need to add a user in BACKEND **Users** table. There are needed 2 pictures and 2 logo images (maybe 2 same ones)
 it's **important** to check `is_active` checkbox because that's how the user that's about to be displayed found. Thanks to
 `is_active` field you can create multiple users and check which one will suite you best.
