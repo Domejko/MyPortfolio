@@ -1,7 +1,7 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
-from .models import Project, Tag, User
+from .models import Project, User
 from .tools import render_css
 
 
@@ -15,8 +15,6 @@ def home(request: HttpRequest) -> HttpResponse:
 
     projects = Project.objects.all()
     user = User.objects.filter(is_active=True).first()
-
-    print(user.images)
 
     for project in projects:
         images = project.images.all()

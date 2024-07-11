@@ -49,7 +49,7 @@ class UserImage(models.Model):
         return f'{self.user.name} Image'
 
 
-class Skill(models.Model):
+class Skills(models.Model):
     user = models.ForeignKey(User, related_name='skills', on_delete=models.CASCADE)
     skill = models.CharField(max_length=100)
     description = models.TextField()
